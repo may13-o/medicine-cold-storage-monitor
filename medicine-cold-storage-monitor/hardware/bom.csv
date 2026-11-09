@@ -1,0 +1,20 @@
+Item,Qty,Value / Part,Source,Notes
+Microcontroller board,1,NXP FRDM-MCXC444,Given,Safety node
+Gateway board,1,NXP FRDM-RW612,Given,Wi-Fi gateway
+Temp/humidity sensor,1,7semi SHT40 breakout (2.54 mm header),Given,I2C 0x44 expected
+Display,1,0.96 in OLED (SSD1306 assumed),Given,I2C 0x3C expected
+Real-time clock,1,RTC module (DS3231 assumed) with CR2032,Given,Confirm part number; I2C 0x68
+Buzzer,1,Active buzzer,Given,Check 3.3 V vs 5 V rating
+LED,1,Red LED 3 or 5 mm,Given,Alarm indicator
+Resistor R1,1,330 ohm,Added,LED current limit
+Resistor R2,1,1 kohm,Added,Buzzer driver base resistor
+Resistor R3,1,10 kohm,Added (optional),Base pull-down
+Resistors R4 R5,2,4.7 kohm,Added (optional),I2C pull-ups; only if no breakout has them
+Transistor Q1,1,NPN 2N2222 or BC547,Added,Buzzer driver
+Diode D1,1,1N4148,Added (optional),Flyback for magnetic buzzers
+Push button,1,Tactile switch,Added,ACK / mute
+Capacitor C1,1,100 nF,Added (optional),Button debounce
+Breadboard,1,Half-size or full-size,Added,Prototyping
+Jumper wires,1,Male-male and male-female set,Added,Keep I2C wires short
+USB cables,2,USB to board connector,Added,Power and programming
+Green LED,1,Green LED (optional),Added (optional),Normal-state indicator

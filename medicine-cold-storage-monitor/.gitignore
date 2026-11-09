@@ -1,0 +1,24 @@
+# Build output
+build/
+Debug/
+Release/
+*.o
+*.elf
+*.axf
+*.bin
+*.map
+tests/host/bin/
+
+# IDE
+.metadata/
+.settings/
+*.launch
+.vscode/
+.idea/
+
+# Secrets - never commit credentials
+secrets.h
+*.pem
+*.key
+*.crt
+.env

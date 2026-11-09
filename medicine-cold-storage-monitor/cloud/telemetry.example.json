@@ -1,0 +1,11 @@
+{
+  "node": "node1",
+  "ts": 1794096000,
+  "ts_src": "rtc",
+  "temp": 4.45,
+  "rh": 61.2,
+  "state": "NORMAL",
+  "fault": 0,
+  "seq": 1042,
+  "buffered": false
+}

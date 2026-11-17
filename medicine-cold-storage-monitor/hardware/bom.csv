@@ -1,8 +1,8 @@
 Item,Qty,Value / Part,Source,Notes
-Microcontroller board,1,NXP FRDM-MCXC444,Given,Safety node
-Gateway board,1,NXP FRDM-RW612,Given,Wi-Fi gateway
-Temp/humidity sensor,1,7semi SHT40 breakout (2.54 mm header),Given,I2C 0x44 expected
-Display,1,0.96 in OLED (SSD1306 assumed),Given,I2C 0x3C expected
+Microcontroller board,1,NXP FRDM-MCXC444,Given,Safety node (should lend)
+Gateway board,1,NXP FRDM-RW612,Given,Wi-Fi gateway (should lend)
+Temp/humidity sensor,1,7semi SHT40 breakout (2.54 mm header),Given,I2C 0x44 expected (tested using esp32 in ard ide,status:working)
+Display,1,0.96 in OLED (SSD1306 assumed),Given,I2C 0x3C expected (tested using esp32 , status:working)
 Real-time clock,1,RTC module (DS3231 assumed) with CR2032,Given,Confirm part number; I2C 0x68
 Buzzer,1,Active buzzer,Given,Check 3.3 V vs 5 V rating
 LED,1,Red LED 3 or 5 mm,Given,Alarm indicator

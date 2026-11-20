@@ -3,11 +3,11 @@
 A two-board IoT node that watches a medicine fridge (target band **2 °C to 8 °C**), raises a **local alarm** on its own, and uploads telemetry to a **cloud dashboard** that sends **automated email/SMS alerts**.
 
 - **FRDM-MCXC444** is the safety node. It samples the sensor, runs the alarm state machine, and drives the OLED, LED and buzzer. It keeps working with no Wi-Fi.
-- **FRDM-RW612** is the Wi-Fi gateway. It validates frames from the node, buffers them through outages, and publishes them over MQTT/TLS.
+- **ESP32 DEVKIT V1** is the Wi-Fi gateway. It validates frames from the node, buffers them through outages, and publishes them over MQTT/TLS.
 - **Cloud** stores history, draws the dashboard, and alerts on temperature excursions **and** on missing data.
 
-> Author: Mayur, Dept. of ECE, NMAM Institute of Technology, Nitte
-> Status: **design / scaffolding stage.** No firmware is flashed yet. See [Project status](#project-status).
+> Author: Mayur, Dept. of EC(ACT), NMAM Institute of Technology, Nitte
+> Status: Firmware is flashed . See [Project status](#project-status).
 
 ---
 
@@ -18,35 +18,20 @@ flowchart LR
     SHT["SHT40<br/>Temp and RH"] -- "I2C 0x44" --> MCU
     OLED["0.96in OLED<br/>SSD1306"] -- "I2C 0x3C" --> MCU
     RTC["RTC module<br/>assumed DS3231"] -- "I2C 0x68" --> MCU
-    BTN["ACK / mute button"] -- GPIO --> MCU
     MCU["FRDM-MCXC444<br/>sample, filter,<br/>alarm state machine"]
-    MCU -- "GPIO + resistor" --> LED["Alarm LED"]
-    MCU -- "GPIO + NPN driver" --> BUZ["Active buzzer"]
-    MCU -- "UART 115200 8N1<br/>framed + CRC8" --> GW["FRDM-RW612<br/>gateway"]
-    GW -. "TIME / MUTE / HB commands" .-> MCU
-    NTP["SNTP server"] -.-> GW
+    MCU -- "UART 115200 8N1<br/>framed + CRC8" --> GW["ESP32<br/>gateway"
     GW -- "Wi-Fi, MQTT over TLS" --> CLOUD["Cloud broker,<br/>rules, dashboard"]
     CLOUD --> ALERT["Email / SMS alerts"]
 ```
-
-Design rules that shape everything else:
-
-1. **The local alarm never depends on the network.** The node decides the alarm state itself.
-2. **Silence is an alarm.** The cloud alerts when telemetry stops arriving, not only when it is too warm or too cold.
-3. **A dead sensor must not look like a healthy fridge.** Sensor, RTC and link faults are reported explicitly.
-4. **No data is silently lost.** The gateway buffers while offline and uploads later, so the history stays complete.
-
 ## Hardware
 
 | Part | Role |
 |---|---|
 | NXP FRDM-MCXC444 | Safety node MCU |
-| NXP FRDM-RW612 | Wi-Fi gateway |
+|ESP32 DEVKIT V1| Wi-Fi gateway |
 | 7semi SHT40 breakout (2.54 mm header) | Temperature / humidity, I2C |
 | 0.96" OLED display | Local readout and status |
 | RTC module with backup coin cell | Timestamps that survive power loss |
-| Active buzzer + LED | Local audible / visual alarm |
-| Resistors, NPN transistor, push button, jumpers | Drivers and support (see [BOM](hardware/bom.csv)) |
 
 Wiring, resistor values and pin table: [docs/wiring.md](docs/wiring.md).
 

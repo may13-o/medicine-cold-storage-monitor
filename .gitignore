@@ -1,0 +1,34 @@
+# --- MCUXpresso Recursive/Staging Folders ---
+__repo__/
+
+# --- Build Output Directories ---
+
+Debug/
+Release/
+build/
+*.axf
+*.bin
+*.hex
+*.s19
+*.elf
+*.map
+*.lst
+*.o
+*.d
+*.su
+
+# --- MCUXpresso / Eclipse IDE Metadata ---
+.metadata/
+.settings/
+*.launch
+*.jlink
+*.bak
+
+# --- SDK Archives (Ignore zip/tar packages, keep extracted SDK folders) ---
+*.zip
+*.tar.gz
+
+# --- OS & Editor Files ---
+.DS_Store
+Thumbs.db
+.vscode/
